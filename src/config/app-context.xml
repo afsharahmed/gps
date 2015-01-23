@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+							http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+		<!-- ############### Root WebApplicationContext ############# -->
+
+		<!-- .......................................................................
+		Resource file location(s)
+		............................................................................  -->
+		
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		  	<property name="locations">
+		  		<list>
+			       	<value>WEB-INF/classes/resourcebundle/db.properties</value>
+			    	<value>WEB-INF/classes/resourcebundle/application.properties</value>
+			    </list>
+		  	</property>	  	
+		</bean>
+		
+		<!-- .......................................................................
+		Data Sources
+		............................................................................  -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		  <property name="driverClassName" value="${jdbc.driverClassName}"/>
+		  <property name="url" value="${jdbc.url}"/>
+		  <property name="username" value="${jdbc.username}"/>
+		  <property name="password" value="${jdbc.password}"/>
+		  
+		</bean>
+
+		<!-- .......................................................................
+		SessionFactory  
+		............................................................................  -->
+<!-- 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="hibernateProperties">
+				<props>
+					<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+					<prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
+					<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				</props>
+			</property>
+			<property name="packagesToScan"> 	
+			    <list>
+			        <value>com.gatepass.model</value>
+			    </list>
+			</property>
+		</bean> -->
+		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="jpaVendorAdapter">
+				<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+			</property>
+			<property name="jpaProperties">
+				<props>
+					<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+					<prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
+					<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+					<prop key="hibernate.max_fetch_depth">3</prop>
+					<prop key="hibernate.jdbc.fetch_size">50</prop>
+					<prop key="hibernate.jdbc.batch_size">10</prop>
+				</props>
+			</property>
+			<property name="packagesToScan"> <!-- Scan the package that contains Entity classes -->
+				<list>
+			        <value>com.gatepass.model</value>
+			    </list>
+			</property>
+		</bean>
+
+	
+		<!-- .......................................................................
+		Transaction Manager { We inject the 'sessionFactory' property into it, so that it becomes aware of what it should operate upon. }
+		............................................................................  -->
+<!--	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean> -->
+ 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+			<property name="entityManagerFactory" ref="entityManagerFactory" />
+		</bean>
+ 	
+		<!-- Enable the configuration of transactional behavior based on annotations -->
+		<tx:annotation-driven transaction-manager="transactionManager" />
+	
+		
+		<!-- 
+			The <context:component-scan> tag tells Spring to scan the code for injectable beans annotated with 
+			@Component, @Controller, @Repository and @Service (as well as supporting @Autowired & @Inject under the
+			package (and all its subpackages) specified. In the <context:component-scan>, multiple packages can be defined
+			by using either a comma, semicolon, or a space as the delimiter.
+		 -->
+		<context:component-scan base-package="com.gatepass.model;com.gatepass.repository;com.gatepass.service;" />
+<!-- 
+<import resource="WEB-INF/classes/config/security-context.xml"/> -->
+		
+</beans>

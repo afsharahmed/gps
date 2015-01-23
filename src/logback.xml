@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+	For detailed understanding of this configuration file please refer 
+	http://logback.qos.ch/manual/configuration.html 
+-->
+
+<configuration scan="true" scanPeriod="120 seconds">
+<!-- using the 'scan' attribute - LOGBACK will scan for changes in this file and automatically reconfigure itself when the configuration file changes -->
+<!-- using the 'scanPeriod' attribute - the period after which LOGBACK will look for changes in this configuration file.
+	 By default, the configuration file will be scanned for changes once every minute.
+	 If no unit of time is specified, then the unit of time is assumed to be milliseconds. -->  
+    
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	  <!-- encoders are assigned by default the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+	  <encoder>
+	    <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} \(%line\) - %msg%n</pattern>
+	  </encoder>
+	</appender>
+
+	<!-- Logging strategy for Controller -->
+	<!-- By setting additivity=false,we override the default behaviour wherein the output of a log statement of logger L
+	will go to all the appenders in L and its ancestors -->
+	
+	<logger name="com.gatepass.controller" level="DEBUG" additivity="false">
+	<appender-ref ref="STDOUT"/>	
+	</logger>
+	<!-- Logging strategy for ManagerImpls -->
+	<logger name="com.gatepass.manager" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<!-- Logging strategy for dao package -->
+	<logger name="com.gatepass.dao" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+
+	<!-- Following <root> element configures the root logger. -->
+	<!-- The level attribute is not necessary since the level of the root is set to DEBUG by default. --> 
+	<root level="INFO">
+	 	<appender-ref ref="STDOUT" />
+	</root>
+  
+</configuration>
+

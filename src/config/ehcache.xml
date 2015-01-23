@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache><!-- Cache names are case-sensitive -->
+			
+    <diskStore path="java.io.tmpdir" /> <!-- instead we can also hard-code any other path  -->
+	
+	<!-- Stores tokens. Max idle time not specified -->
+	<cache name="TokensCache" eternal="true" overflowToDisk="true" maxElementsInMemory="1000000" maxElementsOnDisk="1000000"/>
+<!-- 	<cache name="TokensCache" eternal="true" overflowToDisk="true" maxElementsInMemory="1000000" maxElementsOnDisk="${cache.maxElementsOnDisk}"/> -->
+	
+	<!-- Stores tokens. Max idle time 24 hours -->
+ 	<cache name="MatchAlertsCache" eternal="true" overflowToDisk="true" maxElementsInMemory="10000" maxElementsOnDisk="10000"/> 
+	
+	<!-- Purely hand-set client specific Caches. -->
+	<cache name="VersionsCache"  eternal="true" overflowToDisk="true" maxElementsInMemory="10" maxElementsOnDisk="10"/>
+	
+	<!-- Will hold a single JSONArray by key 'constants' -->
+	<cache name="ConstantsCache" eternal="true" overflowToDisk="true" maxElementsInMemory="1" maxElementsOnDisk="1"/>
+	
+	<!-- Will hold a single JSONArray by key 'messages' -->
+	<cache name="MessagesCache"  eternal="true" overflowToDisk="true" maxElementsInMemory="1" maxElementsOnDisk="1"/>
+	
+	<!-- Will hold a single JSONArray by key 'competitions' -->
+	<cache name="CompetitionsCache" eternal="true" overflowToDisk="true" maxElementsInMemory="1" maxElementsOnDisk="1"/>
+
+<!--		
+    <cache name="some_name"     maxElementsInMemory="100"	 eternal="false"		overflowToDisk="true"
+            timeToIdleSeconds="120" <<
+            timeToLiveSeconds="120"   maxElementsOnDisk="10000000"
+            diskPersistent="false"   diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/> #Least Recently Used (LRU), Least Frequently Used (LFU), FIFO
+ -->   
+ 
+ 	<!-- Stores subscription objects -->
+	<cache name="SubsCache" eternal="true" maxElementsInMemory="1000000" maxElementsOnDisk="1000000"/>	
+</ehcache>
