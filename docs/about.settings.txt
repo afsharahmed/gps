@@ -1,0 +1,2 @@
+http://www.vogella.com/tutorials/Git/article.html
+http://www.vogella.com/tutorials/EclipseGit/article.html
