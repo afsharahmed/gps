@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+.page-container {
+  height:auto; width: 960px; margin-left: auto; margin-right: auto; margin-top: 90px;
+/*   overflow:auto;	 */
+/* 	background-color: rgb(166, 188, 228);	 */
+	text-align: center;
+}
+
+.page-top {
+/* 	background-color: #909090; */
+	height: 100px;
+	width: 100%;
+	clear: both;
+}
+
+.page {
+	height: auto;
+}
+
+.page-links {
+	width: 350px;
+	height: 30px; 
+}
+
+
+
