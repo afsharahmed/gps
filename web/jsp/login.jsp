@@ -23,10 +23,10 @@
 			<div class="login-form-label"><strong>Admin Login</strong></div>
 			<br>
 			<div class="login-form-text"><strong>User Name</strong></div>
-			<div class="login-form-input"><input type="text" name="username" id="username" maxlength="40" autofocus></div>
+			<div class="login-form-input"><input type="text" name="username" id="username" maxlength="40" autofocus value="admin"></div>
 			<br>
 			<div class="login-form-text"><strong>Password</strong></div>
-			<div class="login-form-input"><input type="password" name="password" id="password" maxlength="16"></div>
+			<div class="login-form-input"><input type="password" name="password" id="password" maxlength="16" value="admin"></div>
 			<br>
 			<div class="login-form-button">
 				<input type="submit" value="Login" class="login-form-button">

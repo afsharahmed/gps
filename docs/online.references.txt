@@ -1,0 +1,11 @@
+http://javarevisited.blogspot.in/2012/08/what-is-jsessionid-in-j2ee-web.html
+
+https://docs.oracle.com/cd/E19644-01/817-5451/dwsessn.html
+
+http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html
+
+http://docs.oracle.com/javaee/6/tutorial/doc/bncbx.html#bncca
+
+http://www.onjava.com/pub/a/onjava/2002/06/12/form.html
+
+http://www.tutorialspoint.com/jsp/jsp_security.htm

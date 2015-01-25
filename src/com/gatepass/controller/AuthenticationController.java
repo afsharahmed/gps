@@ -1,9 +1,7 @@
 package com.gatepass.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +15,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.gatepass.service.ExecutiveService;
+import com.gatepass.util.SessionUtil;
 
 @Controller
 public class AuthenticationController 
@@ -43,7 +42,8 @@ public class AuthenticationController
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value="error", required=false) String error,
-							  @RequestParam(value="loggedout", required=false) String logout) 
+							  @RequestParam(value="loggedout", required=false) String logout,
+							  HttpServletRequest request) 
 	{
 		ModelAndView mv;
 		View view = new InternalResourceView("/jsp/login.jsp");
@@ -58,7 +58,7 @@ public class AuthenticationController
 		}
 		
 		logger.debug("Redirecting to login.jsp");
-		
+		SessionUtil.logSessionDetails(request);
 		return mv;
 	}
 
@@ -70,7 +70,7 @@ public class AuthenticationController
 		logger.debug("username="+username+", password="+password);
 		//boolean userExists = userService.isValidUser(username, password);
 		boolean userExists = executiveService.isValidUser(username, password);
-		
+		SessionUtil.logSessionDetails(request);
 		String path = "redirect:login?error=true"; //redirect:/gps
 		
 		if(userExists)
@@ -83,12 +83,12 @@ public class AuthenticationController
 	}
 	
 	@RequestMapping(value="/secure/home", method={RequestMethod.GET})
-	public ModelAndView gpsLoginUser()/*( @RequestParam(value="username") String username,
+	public ModelAndView gpsLoginUser(HttpServletRequest request)/*( @RequestParam(value="username") String username,
 									@RequestParam(value="password") String password)*/
 	{
 		ModelAndView mv;
 		logger.debug("Redirecting to home.jsp");
-		
+		SessionUtil.logSessionDetails(request);
 		
 		View view = new InternalResourceView("/jsp/home.jsp");
 		mv = new ModelAndView(view);
@@ -102,28 +102,7 @@ public class AuthenticationController
 	@RequestMapping(value="/logout", method=RequestMethod.POST)
 	public String logoutUser(HttpServletRequest request, HttpServletResponse response)
 	{
-		// invalidate the session if exists
-		HttpSession session = request.getSession(false);
-		
-		if (session != null) 
-		{
-			logger.debug("User=" + session.getAttribute("user"));
-			session.invalidate();
-		}
-		
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) 
-		{
-			for (Cookie cookie : cookies) 
-			{
-				if (cookie.getName().equals("JSESSIONID")) 
-				{
-					logger.debug("JSESSIONID=" + cookie.getValue());
-					
-					break;
-				}
-			}
-		}
+		SessionUtil.logSessionDetails(request);
 		
 
 			

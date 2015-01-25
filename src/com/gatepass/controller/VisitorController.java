@@ -23,6 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.gatepass.model.Visitor;
 import com.gatepass.service.VisitorService;
+import com.gatepass.util.SessionUtil;
 
 @Controller
 @RequestMapping(value="/secure")
@@ -38,14 +39,14 @@ public final class VisitorController
 	}
 	
 	@RequestMapping(value="/viewVisitors", method={RequestMethod.GET})
-	public ModelAndView getVisitors()
+	public ModelAndView getVisitors(HttpServletRequest request)
 	{
 		View view = new InternalResourceView("/jsp/ViewVisitors.jsp");
 		ModelAndView mv = new ModelAndView(view);
 		
 		List<Visitor> visitors = visitorService.getAllVisitors();
 		logger.info("Total Visitors found:"+visitors.size());
-		
+		SessionUtil.logSessionDetails(request);
 		mv.addObject("visitors", visitors);
 		return mv;
 	}
@@ -172,7 +173,7 @@ public final class VisitorController
 				httpSession = request.getSession();
 			
 			httpSession.setAttribute("visitor", newVisitor);
-			
+			SessionUtil.logSessionDetails(request);
 			response.sendRedirect("/gps/secure/printVisitorDetails"); 
 //			response.sendRedirect("/gps/viewVisitors/"); 
 		
