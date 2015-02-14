@@ -66,7 +66,7 @@
 					</td>
 					
 					<td width="50%;" style="margin: auto;">
-						<div class="page-links" style="color: #FF6820; cursor: pointer;" onclick="nav('viewExecutives');"><strong><u>View All Executives</u></strong></div>
+						<div class="page-links" style="color: #FF6820; cursor: pointer;" onclick="nav('../secure/viewExecutives');"><strong><u>View All Executives</u></strong></div>
 						<div class="page-links" style="color: #2F4F4F;"><strong>View All Executive for GPMS.</strong></div>
 					</td>
 				</tr>

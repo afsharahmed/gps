@@ -9,3 +9,33 @@ http://docs.oracle.com/javaee/6/tutorial/doc/bncbx.html#bncca
 http://www.onjava.com/pub/a/onjava/2002/06/12/form.html
 
 http://www.tutorialspoint.com/jsp/jsp_security.htm
+
+--------------------------------------------------------------------------------------------
+PropertyPlaceholderConfigurer used for properties files to be used in the application context or inside the code with with @value.
+
+ResourceBundleMessageSource used for Internationalization & Localization (i18n) of messages you want to show to the user, within jsp direct, 
+or from your code by wiring message resources bean inside your component.
+
+http://docs.spring.io/spring-security/site/docs/3.2.5.RELEASE/reference/htmlsingle/#hello-web-security-java-configuration
+http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/support/ReloadableResourceBundleMessageSource.html
+http://docs.spring.io/autorepo/docs/spring-security/3.2.4.RELEASE/apidocs/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.html
+http://docs.spring.io/autorepo/docs/spring-security/3.2.4.RELEASE/apidocs/constant-values.html#org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.DEF_AUTHORITIES_BY_USERNAME_QUERY
+
+
+http://www.springbyexample.org/examples/simple-spring-security-webapp-jsp-example.html
+--------------------------------------------------------------------------------------------
+Tomcat server launcher plugin for eclipse luna
+==============================================
+
+1. Download the Eclipse plugin from 'http://www.eclipsetotale.com/tomcatPlugin.html'
+2. Extract in the eclipse\plugins folder and restart eclipse. 
+   You should then have 3 icons in the Eclipse toolbar, for start, stop, restart Tomcat.
+3. Go to window->Preference.Find Tomcat configuration from the left panel and configure it.
+
+--------------------------------------------------------------------------------------------
+
+
+set JAVA_OPTS=%JAVA_OPTS% -Djava.security.auth.login.config=%CATALINA_HOME%/conf/jaas.config
+
+-Dcatalina.base="H:\Workspaces\Home\.metadata\.plugins\org.eclipse.wst.server.core\tmp0" -Dcatalina.home="G:\Programs\Apache\apache-tomcat-7.0.55" -Dwtp.deploy="H:\Workspaces\Home\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps" -Djava.endorsed.dirs="G:\Programs\Apache\apache-tomcat-7.0.55\endorsed" -Djava.security.auth.login.config=G:\Programs\Apache\apache-tomcat-7.0.55\conf\jaas.config
+-Dcatalina.base="H:\Workspaces\Home\.metadata\.plugins\org.eclipse.wst.server.core\tmp0" -Dcatalina.home="G:\Programs\Apache\apache-tomcat-7.0.55" -Dwtp.deploy="H:\Workspaces\Home\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps" -Djava.endorsed.dirs="G:\Programs\Apache\apache-tomcat-7.0.55\endorsed" -Djava.security.auth.login.config="%catalina.home%\conf\jaas.config"

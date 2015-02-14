@@ -6,33 +6,39 @@
 <title>Home</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
-<link rel="shortcut icon" type="" 		  href="images/logo_small.png"/>
-<link rel="stylesheet"	  type="text/css" href="css/login.css" />
+<link rel="shortcut icon" type="" 		  href="../images/logo_small.png"/>
+<link rel="stylesheet"	  type="text/css" href="../css/login.css" />
+<link rel="stylesheet"	  type="text/css" href="../css/theme/theme-basic.css" />
 </head>
 <body>
 	
 <%-- 	<c:url value="/secure/home" var="loginUrl"/> --%>
 	
 
-	<div class="login-header full-width"><img alt="" src="images/logo-login.png" style="height: 90px; width: 200px;"></div>
+	<div class="login-header full-width"><img alt="" src="../images/logo-login.png" style="height: 90px; width: 200px;"></div>
 	<div class="login-header-bottom full-width"></div>
 	
 	<div class="page-container">
-	<form name="input" action="auth" method="POST"> 
+	<form name="input" action="<c:url value="/loginProcess" />" method="POST"> 
 		<div class="login-form">		
 			<div class="login-form-label"><strong>Admin Login</strong></div>
 			<br>
 			<div class="login-form-text"><strong>User Name</strong></div>
-			<div class="login-form-input"><input type="text" name="username" id="username" maxlength="40" autofocus value="admin"></div>
+			<div class="login-form-input"><input type="text" name="j_username" id="username" maxlength="40" value="${SPRING_SECURITY_LAST_USERNAME}" autofocus></div>
 			<br>
 			<div class="login-form-text"><strong>Password</strong></div>
-			<div class="login-form-input"><input type="password" name="password" id="password" maxlength="16" value="admin"></div>
+			<div class="login-form-input"><input type="password" name="j_password" id="password" maxlength="16" value="admin"></div>
 			<br>
 			<div class="login-form-button">
 				<input type="submit" value="Login" class="login-form-button">
 				<input type="reset" value="Reset" class="login-form-button">
 				<span style="cursor: pointer;"><strong>Forgot Password?</strong></span>			
-			</div>			
+			</div>
+			<br>
+			<div class="login-form-button">
+				<input type="checkbox" name="_spring_security_remember_me" id="remember_me" />
+				<label for="remember_me" style="text-decoration: none; cursor: pointer; font: normal 15px Arial;"><strong>Remember me</strong></label>
+			</div>				
 		</div>
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -40,7 +46,13 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
-			
+		<div class="section">
+			 <c:if test="${not empty param.login_error}">
+				<div class="errors">
+					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+				</div>
+			</c:if>
+		</div>	
 	</form>	
 	</div>
 	

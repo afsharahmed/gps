@@ -2,6 +2,7 @@ package com.gatepass.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +59,7 @@ public class AuthenticationController
 		}
 		
 		logger.debug("Redirecting to login.jsp");
-		SessionUtil.logSessionDetails(request);
+		//SessionUtil.logSessionDetails(request);
 		return mv;
 	}
 
@@ -70,7 +71,7 @@ public class AuthenticationController
 		logger.debug("username="+username+", password="+password);
 		//boolean userExists = userService.isValidUser(username, password);
 		boolean userExists = executiveService.isValidUser(username, password);
-		SessionUtil.logSessionDetails(request);
+		//SessionUtil.logSessionDetails(request);
 		String path = "redirect:login?error=true"; //redirect:/gps
 		
 		if(userExists)
@@ -88,7 +89,7 @@ public class AuthenticationController
 	{
 		ModelAndView mv;
 		logger.debug("Redirecting to home.jsp");
-		SessionUtil.logSessionDetails(request);
+		//SessionUtil.logSessionDetails(request);
 		
 		View view = new InternalResourceView("/jsp/home.jsp");
 		mv = new ModelAndView(view);
@@ -98,14 +99,15 @@ public class AuthenticationController
 		
 		return mv;
 	}
-	
+	/*
 	@RequestMapping(value="/logout", method=RequestMethod.POST)
 	public String logoutUser(HttpServletRequest request, HttpServletResponse response)
 	{
-		SessionUtil.logSessionDetails(request);
-		
-
-			
+		//SessionUtil.logSessionDetails(request);
+		HttpSession session = request.getSession(false);
+		logger.debug("User=" + session.getAttribute("user"));
+		session.invalidate();
+		logger.debug( "Session invalidated...." );	
 		return "redirect:login?loggedout=true";
-	}
+	}*/
 }

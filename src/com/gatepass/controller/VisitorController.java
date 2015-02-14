@@ -46,7 +46,7 @@ public final class VisitorController
 		
 		List<Visitor> visitors = visitorService.getAllVisitors();
 		logger.info("Total Visitors found:"+visitors.size());
-		SessionUtil.logSessionDetails(request);
+		//SessionUtil.logSessionDetails(request);
 		mv.addObject("visitors", visitors);
 		return mv;
 	}
@@ -173,7 +173,7 @@ public final class VisitorController
 				httpSession = request.getSession();
 			
 			httpSession.setAttribute("visitor", newVisitor);
-			SessionUtil.logSessionDetails(request);
+			//SessionUtil.logSessionDetails(request);
 			response.sendRedirect("/gps/secure/printVisitorDetails"); 
 //			response.sendRedirect("/gps/viewVisitors/"); 
 		

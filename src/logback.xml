@@ -35,7 +35,7 @@
 
 	<!-- Following <root> element configures the root logger. -->
 	<!-- The level attribute is not necessary since the level of the root is set to DEBUG by default. --> 
-	<root level="INFO">
+	<root level="DEBUG">
 	 	<appender-ref ref="STDOUT" />
 	</root>
   

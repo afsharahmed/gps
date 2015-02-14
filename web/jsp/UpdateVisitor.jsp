@@ -348,6 +348,10 @@ var video;
 				</div> 
 			</div>
 		</form>
+		<form action="/gps/logout" method="POST" id="logoutForm">
+			<input type="hidden" name="csrfToken" value="" />
+		</form>
+		
 	</div>
 
 	<div class="footer full-width">

@@ -19,11 +19,11 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Servlet Filter implementation class AuthenticationFilter
- */
+
 @WebFilter( dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR }, 
 			asyncSupported  = true, 
 			urlPatterns 	= { "/secure*", "/jsp*" } // If some urls need to be by-passed, then put only those urls that need to be authenticated. Eg. { "/login*","/secure*", .. } or { "/*" }
-		   )
+		   ) */
 public class AuthenticationFilter implements Filter 
 {
 	private Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);

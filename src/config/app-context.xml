@@ -24,6 +24,25 @@
 		  	</property>	  	
 		</bean>
 		
+		<!-- 
+		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		    <property name="basename" value="resourcebundle/messages" />
+		</bean> -->
+<!-- 		
+		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+			<property name="defaultEncoding" value="UTF-8" />
+			<property name="basenames">
+				<list>
+					<value>WEB-INF/classes/resourcebundle/messages</value>
+					<value>classpath:resourcebundle/messages</value>
+					<value>classpath:resourcebundle/customer_i18n</value>
+				</list>
+			</property>
+		</bean> 
+		
+		-->
+		
+		
 		<!-- .......................................................................
 		Data Sources
 		............................................................................  -->
@@ -97,7 +116,10 @@
 			by using either a comma, semicolon, or a space as the delimiter.
 		 -->
 		<context:component-scan base-package="com.gatepass.model;com.gatepass.repository;com.gatepass.service;" />
-<!-- 
-<import resource="WEB-INF/classes/config/security-context.xml"/> -->
+		
+	 	<bean id="appManager" class="com.gatepass.service.AppManagerImpl" init-method="init"/>
+
+ 
+<import resource="security-context.xml"/> 
 		
 </beans>

@@ -11,7 +11,7 @@ public class SessionUtil {
 	
 	private static Logger logger = LoggerFactory.getLogger(SessionUtil.class);
 
-	public static void logSessionDetails(HttpServletRequest request)
+	public static void logSessionDetails2(HttpServletRequest request)
 	{
 		// invalidate the session if exists
 				HttpSession session = request.getSession(false);
