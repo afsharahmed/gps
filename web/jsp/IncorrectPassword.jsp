@@ -95,7 +95,7 @@
 			<div class="container">
 				
 				<div class="toplogo">
-					<img src="../images/logo.png" border="0" />
+					<img src="../images/antsglobe-logo.png" border="0" />
 				</div>
 				<div style="clear: both;"></div>
 			</div>
