@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:security="http://www.springframework.org/schema/security"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/security
-                           http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+			 xmlns:beans="http://www.springframework.org/schema/beans" 
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://www.springframework.org/schema/beans
+								 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+								 http://www.springframework.org/schema/security
+								 http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+			
 	<!-- 'global-method-security' configures annotation based security so @Secured can be used to restrict access to methods -->
-    <security:global-method-security secured-annotations="enabled" />
+    <global-method-security secured-annotations="enabled" />
     
-    <security:http auto-config="true">
+    <http auto-config="true">
         <!-- Restrict URLs based on role -->
-        <security:intercept-url pattern="/jsp/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/css/login.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/css/theme/theme-basic.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/css/theme/login**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/css/theme/button-bg.png" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/images/logo-login.png" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        <security:intercept-url pattern="/logout*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/jsp/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/css/login.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/css/theme/theme-basic.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/css/theme/login**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/css/theme/button-bg.png" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/images/logo-login.png" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/logout*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
-        <security:intercept-url pattern="/css/**" access="ROLE_USER" />
-        <security:intercept-url pattern="/js/**" access="ROLE_USER" />
-		<security:intercept-url pattern="/images/**" access="ROLE_USER" />
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <intercept-url pattern="/css/**" access="ROLE_USER" />
+        <intercept-url pattern="/js/**" access="ROLE_USER" />
+		<intercept-url pattern="/images/**" access="ROLE_USER" />
+        <intercept-url pattern="/**" access="ROLE_USER" />
 
         <!-- Override default login and logout pages     login-processing-url="/loginProcess"  -->
-        <security:form-login login-page="/jsp/login.jsp" 
+        <form-login login-page="/jsp/login.jsp" 
                              login-processing-url="/loginProcess" 
                              default-target-url="/secure/home" 
                              always-use-default-target="true"
-                             authentication-failure-url="/jsp/login-new.jsp?login_error=1" />
-        <security:logout logout-url="/logout" logout-success-url="/jsp/login-new.jsp?logged_out=1" />
-    </security:http>
+                             authentication-failure-url="/jsp/login.jsp?login_error=1" />
+        <logout logout-url="/logout" logout-success-url="/jsp/login.jsp?logged_out=1" />
+    </http>
 
-    <security:authentication-manager>
-        <security:authentication-provider >
-            <security:jdbc-user-service data-source-ref="dataSource" />
-        </security:authentication-provider>
-    </security:authentication-manager>
+    <authentication-manager>
+        <authentication-provider >
+            <jdbc-user-service data-source-ref="dataSource"
+		  						users-by-username-query="select username, password, enabled from gpa_user where username=?"
+		  						authorities-by-username-query="select username, role from gpa_user where username =?"/>
+        </authentication-provider>
+    </authentication-manager>
 
-</beans>
+</beans:beans>

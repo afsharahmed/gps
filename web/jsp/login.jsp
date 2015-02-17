@@ -1,4 +1,4 @@
-<%@ page session="false" %> 
+<%@ page session="false" import = "java.util.Enumeration;"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -11,10 +11,6 @@
 <link rel="stylesheet"	  type="text/css" href="../css/theme/theme-basic.css" />
 </head>
 <body>
-	
-<%-- 	<c:url value="/secure/home" var="loginUrl"/> --%>
-	
-
 	<div class="login-header full-width"><img alt="" src="../images/logo-login.png" style="height: 90px; width: 200px;"></div>
 	<div class="login-header-bottom full-width"></div>
 	
@@ -35,24 +31,20 @@
 				<span style="cursor: pointer;"><strong>Forgot Password?</strong></span>			
 			</div>
 			<br>
+			<!-- 
 			<div class="login-form-button">
 				<input type="checkbox" name="_spring_security_remember_me" id="remember_me" />
 				<label for="remember_me" style="text-decoration: none; cursor: pointer; font: normal 15px Arial;"><strong>Remember me</strong></label>
-			</div>				
+			</div> -->				
 		</div>
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
+		
+		<!-- ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} -->
+		<c:if test="${not empty param.login_error}">
+			<div class="error-msg">Invalid credentials</div>
 		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
+		<c:if test="${not empty param.logged_out}">
+			<div class="msg">You have logged out successfully.</div>
 		</c:if>
-		<div class="section">
-			 <c:if test="${not empty param.login_error}">
-				<div class="errors">
-					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-				</div>
-			</c:if>
-		</div>	
 	</form>	
 	</div>
 	
@@ -62,7 +54,9 @@
 			<a style="color: #fff;" href="./main-panel.html">Disclaimer</a>
 			
 		</div>
-<!-- 		<div class="footer-right"></div>		 -->
+		<%-- <div>
+			<c:forEach var="par" items="${paramValues}">${par.key} = ${par.value[0]};</c:forEach>
+		</div> --%>
 	</div>
 </body>
 </html>

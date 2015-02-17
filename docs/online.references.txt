@@ -21,7 +21,7 @@ http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/contex
 http://docs.spring.io/autorepo/docs/spring-security/3.2.4.RELEASE/apidocs/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.html
 http://docs.spring.io/autorepo/docs/spring-security/3.2.4.RELEASE/apidocs/constant-values.html#org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.DEF_AUTHORITIES_BY_USERNAME_QUERY
 
-
+http://www.mkyong.com/spring-security/spring-security-form-login-using-database/
 http://www.springbyexample.org/examples/simple-spring-security-webapp-jsp-example.html
 --------------------------------------------------------------------------------------------
 Tomcat server launcher plugin for eclipse luna

@@ -105,12 +105,12 @@ div.login-form-button > div:HOVER { cursor: pointer; text-decoration: underline;
 	box-shadow: 2px 2px 4px 0px #999999; /* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-.error, .msg { margin: 10px auto auto auto; width: 800px; height: 20px; line-height: 20px; padding: 10px 2px; text-align: center;
+.error-msg, .msg { margin: 10px auto auto auto; width: 40%; height: 16px; line-height: 16px; padding: 10px 2px; text-align: center;
 	position: absolute; left: 30%; top: 500px;
 	z-index: 14; font: lighter 14px Arial; 
 }
 
-.error { 
+.error-msg { 
 	background-color: rgb(243, 226, 226);
 }
 .msg { 
