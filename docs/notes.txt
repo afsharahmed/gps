@@ -1,0 +1,13 @@
+Junit enabed application's package structure:
+
+myproject/src/com/foo/Bar.java
+myproject/test/com/foo/BarTest.java
+
+In a Maven project it would look like this:
+
+myproject/src/main/java/com/foo/Bar.java
+myproject/src/test/java/com/foo/BarTest.java
+
+---------------------------------------------------------------------
+
+
