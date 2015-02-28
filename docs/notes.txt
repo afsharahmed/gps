@@ -1,3 +1,6 @@
+http://localhost:8080/gps/
+
+
 Junit enabed application's package structure:
 
 myproject/src/com/foo/Bar.java

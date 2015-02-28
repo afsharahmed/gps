@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (32 bit)
-MySQL - 5.5.12 : Database - sahiapps_main
+SQLyog Community Edition- MySQL GUI v7.11 
+MySQL - 5.5.42 : Database - sahiapps_main
 *********************************************************************
 */
 
@@ -8,10 +8,9 @@ MySQL - 5.5.12 : Database - sahiapps_main
 
 /*!40101 SET SQL_MODE=''*/;
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`sahiapps_main` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `sahiapps_main`;
@@ -64,15 +63,15 @@ CREATE TABLE `gpa_user` (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
-  `role` varchar(10) NOT NULL DEFAULT 'EXECUTIVE',
-  `isBlocked` tinyint(1) NOT NULL DEFAULT '0',
+  `role` varchar(10) NOT NULL DEFAULT 'ROLE_USER' COMMENT 'ROLE_USER, ROLE_ADMIN',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `lastLogin` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `gpa_user` */
 
-insert  into `gpa_user`(`id`,`username`,`password`,`role`,`isBlocked`,`lastLogin`) values (1,'afshar','aaa','EXECUTIVE',0,NULL),(2,'admin','admin','ADMIN',0,NULL);
+insert  into `gpa_user`(`id`,`username`,`password`,`role`,`enabled`,`lastLogin`) values (1,'afshar','aaa','ROLE_USER',1,NULL),(2,'admin','admin','ROLE_USER',1,NULL);
 
 /*Table structure for table `gpa_visitor` */
 
@@ -119,5 +118,3 @@ insert  into `users`(`id`,`username`,`password`,`enabled`) values (1,'david','dd
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

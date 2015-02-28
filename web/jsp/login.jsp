@@ -23,7 +23,7 @@
 			<div class="login-form-input"><input type="text" name="j_username" id="username" maxlength="40" value="${SPRING_SECURITY_LAST_USERNAME}" autofocus></div>
 			<br>
 			<div class="login-form-text"><strong>Password</strong></div>
-			<div class="login-form-input"><input type="password" name="j_password" id="password" maxlength="16" value="admin"></div>
+			<div class="login-form-input"><input type="password" name="j_password" id="password" maxlength="16" value=""></div>
 			<br>
 			<div class="login-form-button">
 				<input type="submit" value="Login" class="login-form-button">
