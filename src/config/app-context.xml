@@ -18,12 +18,14 @@
 		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		  	<property name="locations">
 		  		<list>
-			       	<value>WEB-INF/classes/resourcebundle/db.properties</value>
-			    	<value>WEB-INF/classes/resourcebundle/application.properties</value>
+			       	<value>classpath:resourcebundle/db.properties</value>
+			    	<value>classpath:resourcebundle/application.properties</value>
 			    </list>
 		  	</property>	  	
 		</bean>
-		
+<!-- Note: When i used 'WEB-INF/classes/resourcebundle/db.properties' i was getting fileNotFound exception 
+when trying to use with '@TestPropertySource' 
+-->		
 		<!-- 
 		<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		    <property name="basename" value="resourcebundle/messages" />
@@ -115,7 +117,7 @@
 			package (and all its subpackages) specified. In the <context:component-scan>, multiple packages can be defined
 			by using either a comma, semicolon, or a space as the delimiter.
 		 -->
-		<context:component-scan base-package="com.gatepass.model;com.gatepass.repository;com.gatepass.service;" />
+		<context:component-scan base-package="com.gatepass.model;com.gatepass.repository;com.gatepass.service;config.test;" />
 		
 	 	<bean id="appManager" class="com.gatepass.service.AppManagerImpl" init-method="init"/>
 

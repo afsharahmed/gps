@@ -22,13 +22,13 @@ import com.gatepass.util.SessionUtil;
 public class AuthenticationController 
 {
 	private Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
-
+/*
 	private ExecutiveService executiveService;
 	
 	@Autowired
 	public void setExecutiveService(ExecutiveService executiveService) {
 		this.executiveService = executiveService;
-	}
+	}*/
 	
 //	private UserService userService;
 //
@@ -41,7 +41,7 @@ public class AuthenticationController
 	/*
 	 * @see http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-redirecting
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value="error", required=false) String error,
 							  @RequestParam(value="loggedout", required=false) String logout,
 							  HttpServletRequest request) 
@@ -82,7 +82,7 @@ public class AuthenticationController
 			
 		return path;
 	}
-	
+*/	
 	@RequestMapping(value="/secure/home", method={RequestMethod.GET})
 	public ModelAndView gpsLoginUser(HttpServletRequest request)/*( @RequestParam(value="username") String username,
 									@RequestParam(value="password") String password)*/

@@ -13,6 +13,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gatepass.model.Visitor;
+
+/**
+ * @see http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+ * @author Afshar Ahmed
+ */
 @Repository
 public class VisitorRepositoryImpl implements VisitorRepository 
 {	

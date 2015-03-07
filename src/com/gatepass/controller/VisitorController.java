@@ -23,7 +23,6 @@ import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.gatepass.model.Visitor;
 import com.gatepass.service.VisitorService;
-import com.gatepass.util.SessionUtil;
 
 @Controller
 @RequestMapping(value="/secure")
@@ -33,7 +32,7 @@ public final class VisitorController
 	
 	private VisitorService visitorService;
 
-	@Autowired
+
 	public void setVisitorService(VisitorService visitorService) {
 		this.visitorService = visitorService;
 	}

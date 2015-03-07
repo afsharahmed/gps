@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.gatepass.model.User;
 
+/**
+ * @see http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+ * @author Afshar Ahmed
+ */
 @Repository
 public class UserRepositoryImpl implements UserRepository 
 {

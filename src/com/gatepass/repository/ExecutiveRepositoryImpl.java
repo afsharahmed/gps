@@ -15,6 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gatepass.model.Executive;
 
+/**
+ * @see http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+ * @author Afshar Ahmed
+ */
 @Repository
 public class ExecutiveRepositoryImpl implements ExecutiveRepository 
 {
