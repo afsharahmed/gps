@@ -12,5 +12,18 @@ myproject/src/main/java/com/foo/Bar.java
 myproject/src/test/java/com/foo/BarTest.java
 
 ---------------------------------------------------------------------
+HTML template sites
+-------------------
+http://www.enough.pro/15-best-ecommerce-templates-for-website-absolutely-free/
+http://www.dreamtemplate.com/templates/shopping-website-templates.html
+http://www.freshdesignweb.com/free-ecommerce-website-templates.html
+
+
+
+
+HTML CURRENCY CODES
+------------------
+http://www.w3schools.com/charsets/ref_utf_currency.asp
+
 
 
