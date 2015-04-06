@@ -32,7 +32,7 @@ public final class VisitorController
 	
 	private VisitorService visitorService;
 
-
+	@Autowired
 	public void setVisitorService(VisitorService visitorService) {
 		this.visitorService = visitorService;
 	}
